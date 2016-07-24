@@ -17,10 +17,11 @@
     }
 }
 
-
+@import 'https://fonts.googleapis.com/css?family=PT+Sans';
 
 // Import partials from `sass_dir` (defaults to `_sass`)
 @import
         "base",
-        "tutorial"
+        "tutorial",
+        "nav"
 ;
