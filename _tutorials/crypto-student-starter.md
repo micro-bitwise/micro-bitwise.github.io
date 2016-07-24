@@ -1,6 +1,6 @@
 ---
 layout: tutorial
-tutorial_type: Lesson Plan
+tutorial_type: Starter Activity
 authors:
 - Joe Savage
 - Ross Gardiner
@@ -8,25 +8,12 @@ authors:
 
 # Encryption
 
-## Overview
+When you log into a website - like Facebook, or your email account - have you ever wondered how the website can tell that it is really you? Your computer must be sending a message to the website with your password. But what if other people were able to read those messages? That would be bad! They could steal your password, and then they would be able to send the same message - and pretend to be you!
 
-Our society depends utterly on our ability to securely send messages - like financial transactions, business emails and medical records - so that they cannot be intercepted and read by criminals or other 'bad actors'.
+Think about buying something from a shop with a credit card. How does the shop tell the bank to move the money from your account to their account? What if someone else could intercept those messages and change them? That would be bad too - then they could change the prices, or move the money to their account instead!
 
-*Cryptography* is the complex and subtle science of scrambling a message's contents so that it can be read only by its intended recipient.
+All of these problems are solved by *encryption*. An encrypted message is scrambled so that nobody - except the sender and the receiver - can read it. Even if someone else intercepts the message, they won't be able to read it. If they try to change it, it will be obvious to the receiver. The science of encryption is called *cryptography*, and has existed for thousands of years.
 
-In this activity, students will learn about simple forms of cryptography and use them to exchange messages.
+## Chaos!
 
-### What you need
-
-* Teams of two, paired into teams of four
-* One micro:bit per person
-* The `mu` Python editor
-
-### Resources
-
-* [BBC micro:bit MicroPython documentation](http://microbit-micropython.readthedocs.io/en/latest/)
-* Suggested book: [The Cracking Code Book, Simon Singh](https://www.harpercollins.co.uk/9780007176045/the-cracking-code-book)
-* [Online Python editor](https://www.microbit.co.uk/app/#create:xyelfe)
-* [Offline Python editor (Mu)](http://codewith.mu/)
-
-## Starter Activity
+First, we're going to see what happens when you send messages with no encryption.

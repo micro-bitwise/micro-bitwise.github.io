@@ -40,8 +40,8 @@ Students will finish this activity understanding
 
 ## Starter Activity
 
-In the starter activity, students will discover what happens when we fail to encrypt messages.
+In the [starter activity](/tutorial/crypto-student-starter), students will discover what happens when we fail to encrypt messages.
 
 ## Main Activity
 
-In the main activity, students will work in teams of two and then four, implementing their own cipher and attempting to break those of their partners.
+In the [main activity](/tutorial/crypto-student-main), students will work in teams of two and then four, implementing their own cipher and attempting to break those of their partners.
