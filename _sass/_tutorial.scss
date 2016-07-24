@@ -1,0 +1,38 @@
+article.tutorial {
+	max-width: 840px;
+	margin: .8em auto;
+	color: #36382E;
+	border: 2px solid #F06449;
+	border-radius: 3px;
+	background-color: #fafafa;
+	padding: .5em 2.5em;
+	-webkit-font-smoothing: subpixel-antialiased;
+	text-rendering: optimizeLegibility;
+
+  header {
+  	display: block;
+  	font-size: 1.8em;
+  	height: 1.6em;
+  	background: #F06449;
+  	color: #fafafa;
+  	padding: 0.55em 1.38em;
+  	text-align: left;
+
+    header h1 {
+    	font-family: 'PT Sans', sans-serif;
+    	float: left;
+    	font-size: inherit;
+    	line-height: 1.6em;
+    	margin: 0;
+    }
+
+    img {
+      float: right;
+      max-height: 100%;
+    }
+  }
+
+  h1 {
+    font-size: 3.2em;
+  }
+}

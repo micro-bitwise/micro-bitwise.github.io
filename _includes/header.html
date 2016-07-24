@@ -1,0 +1,11 @@
+<header class="page-header">
+  <a class="page-header__title" href="{{ site.baseurl }}/">{{ site.organisation }}</a>
+
+  <nav class="page-header__site-nav">
+    <ul>
+      {% for page in site.pages %}
+        <li><a href="{{ page.url }}">{{ page.title }}</a></li>
+      {% endfor %}
+    </ul>
+  </nav>
+</header>

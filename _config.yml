@@ -1,0 +1,15 @@
+# Site settings
+title: :bitwise micro:bit Activities
+organisation: :bitwise
+description: > # Some activities for the micro:bit
+baseurl: "" # the subpath of your site, e.g. /blog
+url: "http://micro-bitwise.github.io" # the base hostname & protocol for your site
+github_username:  micro-bitwise
+
+# Build settings
+markdown: kramdown
+
+collections:
+  tutorials:
+    output: true
+    permalink: /tutorial/:path/
