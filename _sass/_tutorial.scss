@@ -50,6 +50,12 @@ article.tutorial {
       font-size: 3.2em;
     }
 
+    &__answer {
+      background: #ccc;
+      display: none;
+      padding: 15px;
+    }
+
     padding: .5em 2.5em;
   }
 }

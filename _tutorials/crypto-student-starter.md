@@ -25,3 +25,31 @@ All of these problems are solved by *encryption*. An encrypted message is scramb
 First, we're going to see what happens when we send messages with no encryption. Your micro:bit can send and receive wireless messages using something called 'Bluetooth'. It's a little bit like WiFi, but Bluetooth is designed for small, nearby objects that want to talk to one another.
 
 Open the [micro:bit Python editor](https://www.microbit.co.uk/app/#create:xyelfe) (if you are using the desktop app Mu instead, open that). We're going to write some very simple Python code that will repeatedly send and receive messages using Bluetooth.
+
+```
+from microbit import *
+
+import radio
+
+radio.on()
+
+while True:
+    if button_a.was_pressed():
+        radio.send("Mr Eric Praline") # Change this to your name!
+
+    new_message = radio.receive()
+    if new_message:
+        display.scroll(new_message)
+```
+
+Copy this script, changing the name to your own. Flash it to your micro:bit. When your teacher asks you to, start pressing the 'A' button on your micro:bit. Whose names do you see? Does your partner see your name, or someone else's?
+
+Think about what this means.
+
+If you send a message using Bluetooth, who can see it?
+
+[Show answer](javascript:$('#answer1').show("slow"))
+
+<div id="answer1" class="tutorial__content__answer">
+Anyone! There is no way of making sure only one person sees your message.
+</div>

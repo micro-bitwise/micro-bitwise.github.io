@@ -42,6 +42,8 @@ Students will finish this activity understanding
 
 In the [starter activity](/tutorial/crypto-student-starter), students will discover what happens when we fail to encrypt messages.
 
+For this activity, each student should have a partner. Once everyone has flashed the script to their micro:bit, you should ask them to start pressing the 'A' button. This will cause the micro:bit to send the student's name over Bluetooth. The micro:bits will display any messages they receive. This illustrates how you cannot control who recieves your wireless messages.
+
 ## Main Activity
 
 In the [main activity](/tutorial/crypto-student-main), students will work in teams of two and then four, implementing their own cipher and attempting to break those of their partners.
