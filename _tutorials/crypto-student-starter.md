@@ -29,19 +29,4 @@ In this activity, students will learn about simple forms of cryptography and use
 * [Online Python editor](https://www.microbit.co.uk/app/#create:xyelfe)
 * [Offline Python editor (Mu)](http://codewith.mu/)
 
-### Learning Objectives
-
-Students will finish this activity understanding
-
-* what cryptography is and does
-* why cryptography is important
-* how the most basic forms of cryptography - the Caesar cipher and other simple substitution ciphers - work
-* how the most basic forms of cryptography can be broken
-
 ## Starter Activity
-
-In the starter activity, students will discover what happens when we fail to encrypt messages.
-
-## Main Activity
-
-In the main activity, students will work in teams of two and then four, implementing their own cipher and attempting to break those of their partners.
