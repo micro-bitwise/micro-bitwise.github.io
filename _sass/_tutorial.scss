@@ -1,29 +1,42 @@
 article.tutorial {
+  background-color: #fafafa;
+  border: 2px solid #F06449;
+  border-radius: 3px;
+  color: #36382E;
+  display: flex;
+  flex-direction: column;
 	max-width: 840px;
 	margin: .8em auto;
-	color: #36382E;
-	border: 2px solid #F06449;
-	border-radius: 3px;
-	background-color: #fafafa;
-	padding: .5em 2.5em;
 	-webkit-font-smoothing: subpixel-antialiased;
 	text-rendering: optimizeLegibility;
 
-  header {
-  	display: block;
+  .tutorial__header {
+  	display: flex;
+    flex-direction: row;
   	font-size: 1.8em;
-  	height: 1.6em;
+  	height: 2.4em;
   	background: #F06449;
   	color: #fafafa;
-  	padding: 0.55em 1.38em;
   	text-align: left;
+    width: 100%;
 
-    header h1 {
+    &__tutorial-type {
     	font-family: 'PT Sans', sans-serif;
+      flex-grow: 1;
     	float: left;
     	font-size: inherit;
     	line-height: 1.6em;
-    	margin: 0;
+    	margin: 10px;
+    }
+
+    &__icons {
+      align-items: center;
+      display: flex;
+      height: 100%;
+      img {
+        height: 50%;
+        margin: 10px;
+      }
     }
 
     img {
@@ -32,7 +45,11 @@ article.tutorial {
     }
   }
 
-  h1 {
-    font-size: 3.2em;
+  .tutorial__content {
+    h1 {
+      font-size: 3.2em;
+    }
+
+    padding: .5em 2.5em;
   }
 }
