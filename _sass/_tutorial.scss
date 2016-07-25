@@ -2,29 +2,29 @@ article.tutorial {
   border: 2px solid #F06449;
   display: flex;
   flex-direction: column;
-	max-width: 840px;
-	margin: .8em auto;
+  max-width: 840px;
+  margin: .8em auto;
   padding: 0;
-	-webkit-font-smoothing: subpixel-antialiased;
-	text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: subpixel-antialiased;
+  text-rendering: optimizeLegibility;
 
   .tutorial__header {
-  	display: flex;
+    display: flex;
     flex-direction: row;
-  	font-size: 1.8em;
-  	height: 2.4em;
-  	background: #F06449;
-  	color: #fafafa;
-  	text-align: left;
+    font-size: 1.8em;
+    height: 2.4em;
+    background: #F06449;
+    color: #fafafa;
+    text-align: left;
     width: 100%;
 
     &__tutorial-type {
-    	font-family: 'PT Sans', sans-serif;
+      font-family: 'PT Sans', sans-serif;
       flex-grow: 1;
-    	float: left;
-    	font-size: inherit;
-    	line-height: 1.6em;
-    	margin: 10px 10px 10px 20px;
+      float: left;
+      font-size: inherit;
+      line-height: 1.6em;
+      margin: 10px 10px 10px 20px;
     }
 
     &__icons {
