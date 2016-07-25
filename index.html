@@ -5,11 +5,13 @@ layout: default
 <div class="page-wrapper home">
   <section class="home__posts home__section">
     <h1 class="home__section__title">Posts</h1>
-    <ul class="home__posts__post-list">
+    <ul class="post-list">
       {% for post in site.posts %}
         <li>
-          <span class="home__posts__post-list__meta">{{ post.date | date: "%b %-d, %Y" }}</span>
-          <h2><a href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a></h2>
+          <a href="{{ post.url | prepend: site.baseurl }}">
+            <h2>{{ post.title }}</h2>
+            <span class="home__posts__post-list__meta">{{ post.date | date: "%b %-d, %Y" }}</span>
+          </a>
         </li>
       {% endfor %}
     </ul>
@@ -17,10 +19,12 @@ layout: default
 
   <section class="home__tutorials home__section">
     <h1 class="home__section__title">Tutorials</h1>
-    <ul class="home__tutorials__tutorial-list">
+    <ul class="tutorial-list">
       {% for tutorial in site.tutorials %}
         <li>
-          <h2><a href="{{ tutorial.url | prepend: site.baseurl }}">{{ tutorial.title }}</a></h2>
+          <a href="{{ tutorial.url | prepend: site.baseurl }}">
+            <h2>{{ tutorial.title }}</h2>
+          </a>
         </li>
       {% endfor %}
     </ul>
