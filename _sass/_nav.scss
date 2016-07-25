@@ -24,3 +24,9 @@
     }
   }
 }
+
+@media print {
+  .page-header {
+    display: none;
+  }
+}

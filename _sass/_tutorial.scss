@@ -57,3 +57,12 @@ article.tutorial {
     padding: .5em 2.5em 1em;
   }
 }
+
+@media print {
+  article.tutorial {
+    border: none;
+    .tutorial__header {
+      -webkit-print-color-adjust: exact; /* this is frustrating! */
+    }
+  }
+}
