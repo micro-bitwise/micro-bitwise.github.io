@@ -10,7 +10,7 @@ authors:
 
 ## Overview
 
-Our society depends utterly on our ability to securely send messages - like financial transactions, business emails and medical records - so that they cannot be intercepted and read by criminals or other 'bad actors'.
+Our society depends utterly on our ability to securely send messages — like financial transactions, business emails and medical records — so that they cannot be intercepted and read by criminals or other 'bad actors'.
 
 *Cryptography* is the complex and subtle science of scrambling a message's contents so that it can be read only by its intended recipient.
 
@@ -31,11 +31,11 @@ In this activity, students will learn about simple forms of cryptography and use
 
 ### Learning Objectives
 
-Students will finish this activity understanding
+Students will finish this activity understanding:
 
 * what cryptography is and does
 * why cryptography is important
-* how the most basic forms of cryptography - the Caesar cipher and other simple substitution ciphers - work
+* how the most basic forms of cryptography — the Caesar cipher and other simple substitution ciphers — work
 * how the most basic forms of cryptography can be broken
 
 ## Starter Activity
