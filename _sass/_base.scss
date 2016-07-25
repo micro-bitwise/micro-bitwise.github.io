@@ -29,6 +29,16 @@ li {
   margin-bottom: 0.5em;
 }
 
+figure {
+  text-align: center;
+}
+
+figcaption {
+  color: #aaa;
+  font-size: .8em;
+  margin: .5em 0;
+}
+
 .page-wrapper {
   box-sizing: border-box;
   max-width: 840px;

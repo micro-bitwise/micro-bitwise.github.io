@@ -10,7 +10,7 @@ authors:
 
 When you log into a website — like Facebook, or your email account — have you ever wondered how the website can tell that it is really you? Your computer must be sending a message to the website with your password. But what if other people were able to read those messages? That would be bad! They could steal your password, and then they could pretend to be you!
 
-![Uh oh!](/assets/contrib/images/crypto/facebook-login.png)
+{% include image.html source='/assets/contrib/images/crypto/facebook-login.png' alt='Uh oh!' %}
 
 Hmm, maybe that would be a bad thing.
 
@@ -18,7 +18,7 @@ Now think about buying something from a shop with a credit card. How does the sh
 
 All of these problems are solved by *encryption*. An encrypted message is scrambled so that nobody — except the sender and the receiver — can read it. Even if someone else intercepts the message, they won't be able to read it. If they try to change it, it will be obvious to the receiver. The science of encryption is called *cryptography*, and has existed for thousands of years.
 
-![A scrambled message](/assets/contrib/images/crypto/scrambled-message.png)
+{% include image.html source='/assets/contrib/images/crypto/scrambled-message.png' alt='A scrambled message' %}
 
 ## Chaos!
 

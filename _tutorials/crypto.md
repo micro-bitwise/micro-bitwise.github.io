@@ -16,9 +16,7 @@ Our society depends utterly on our ability to securely send messages — like fi
 
 In this activity, students will learn about simple forms of cryptography and use them to exchange messages.
 
-![xkcd 153](http://imgs.xkcd.com/comics/cryptography.png)
-
-(from [xkcd](https://xkcd.com/153/))
+{% include image.html source='http://imgs.xkcd.com/comics/cryptography.png' alt='xkcd 153' caption='(from [xkcd](https://xkcd.com/153/))' %}
 
 ### What you need
 
