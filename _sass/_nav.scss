@@ -1,6 +1,7 @@
 .page-header {
   display: flex;
   flex-direction: row;
+  padding: .5em 1em;
   &__title {
     color: #555;
     flex-grow: 1;
@@ -11,6 +12,7 @@
     ul {
       display: flex;
       flex-direction: row;
+      margin: 0;
       li {
         a {
           color: #555;

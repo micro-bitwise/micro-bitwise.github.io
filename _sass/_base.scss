@@ -28,3 +28,13 @@ li {
 	line-height: 1.4em;
 	margin-bottom: 0.5em;
 }
+
+.page-wrapper {
+	box-sizing: border-box;
+	max-width: 840px;
+	margin: 0 auto;
+	background-color: #fafafa;
+	border-radius: 3px;
+	color: #36382E;
+	padding: 1em 2.5em;
+}
