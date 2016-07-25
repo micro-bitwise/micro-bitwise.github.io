@@ -16,17 +16,21 @@ Our society depends utterly on our ability to securely send messages — like fi
 
 In this activity, students will learn about simple forms of cryptography and use them to exchange messages.
 
+![xkcd 153](http://imgs.xkcd.com/comics/cryptography.png)
+
+(from [xkcd](https://xkcd.com/153/))
+
 ### What you need
 
 * Teams of two, paired into teams of four
 * One micro:bit per person
-* The `mu` Python editor
+* The `Mu` Python editor
 
 ### Resources
 
 * [BBC micro:bit MicroPython documentation](http://microbit-micropython.readthedocs.io/en/latest/)
 * Suggested book: [The Cracking Code Book, Simon Singh](https://www.harpercollins.co.uk/9780007176045/the-cracking-code-book)
-* [Online Python editor](https://www.microbit.co.uk/app/#create:xyelfe)
+* [Online Python editor](https://www.microbit.co.uk/app/#create:xyelfe) (NB: the online editor does not currently work with the Bluetooth radio - Mu must be used in the meantime)
 * [Offline Python editor (Mu)](http://codewith.mu/)
 
 ### Learning Objectives
@@ -42,7 +46,9 @@ Students will finish this activity understanding:
 
 In the [starter activity](/tutorial/crypto-student-starter), students will discover what happens when we fail to encrypt messages.
 
-For this activity, each student should have a partner. Once everyone has flashed the script to their micro:bit, you should ask them to start pressing the 'A' button. This will cause the micro:bit to send the student's name over Bluetooth. The micro:bits will display any messages they receive. This illustrates how you cannot control who recieves your wireless messages.
+If students have not used Mu before, show them how to launch it.
+
+Each student should have a partner. Once everyone has read the introduction and flashed the script to their micro:bit, you should ask them to start pressing the 'A' button. This will cause the micro:bit to send the student's name over Bluetooth. The micro:bits will display any messages they receive. This illustrates how you cannot control who recieves your wireless messages.
 
 ## Main Activity
 
