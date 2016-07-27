@@ -50,4 +50,4 @@ Each student should have a partner. Once everyone has read the introduction and 
 
 ## Main Activity
 
-In the [main activity](/tutorial/crypto-student-main), students will work in teams of two and then four, implementing their own cipher and attempting to break those of their partners.
+In the [main activity](/tutorial/crypto-student-main), students will learn about substitution ciphers by making and breaking basic shift cipher messaging protocols. Students should be placed in teams of two, implementing their own cipher and attempting to break the code of another group.
