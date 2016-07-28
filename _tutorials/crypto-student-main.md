@@ -71,7 +71,7 @@ We’ll start off by shifting our message by a fixed number of letters. Look at 
 
 * Decide on a channel with your partner, and both use the same channel
 * Set your name
-* Choose a number of letters to shift your message by
+* Choose a number of letters to shift your message by (keep this secret!)
 
 Then you can flash it to both your micro:bits, press the ‘A’ button and see what happens. You should see a scrambled message on the other micro:bit!
 
@@ -180,7 +180,7 @@ With this number representing the letter resulting from the shift, it's importan
 ## Message Selection
 We've done it, we've implemented a basic shift cipher! Sending a predetermined message like your name isn't terribly useful though. Messaging apps [*usually*](https://en.wikipedia.org/wiki/Yo_(app)) let you choose a message for yourself. So let's do that!
 
-The micro:bit isn't a device designed for longform textual input, so writing messages won't be the easiest, but it can be done. We can use the two face buttons to scroll through the alphabet — displaying the current letter on the LED grid — and can send the letter when both buttons are pressed in parallel, slowly building a message. This arrangement is a little clunky, particularly if you're hoping to write a bestselling novel, but for our purposes it will suffice.
+The micro:bit isn't a device designed for long-form textual input, so writing messages won't be the easiest, but it can be done. We can use the two face buttons to scroll through the alphabet — displaying the current letter on the LED grid — and can send the letter when both buttons are pressed in parallel, slowly building a message. This arrangement is a little clunky, particularly if you're hoping to write a bestselling novel, but for our purposes it will suffice.
 
 As the focus of this activity is to learn about encryption rather than input mechanisms, our final program to send and receive encrypted messages over a particular radio channel follows. If you're curious to learn more about how `get_letter` works, the general idea is that we display the `current_letter` that has been selected until it is detected that both buttons have been pressed, at which point the letter that was selected at this time is given as the output of the function.
 
@@ -209,7 +209,7 @@ In fact, ‘e’ is generally the most common letter in the English language, fo
 
 {% include image.html source='/assets/contrib/images/crypto/english-letter-frequency.png' alt='Relative frequencies of letters in the English language' caption='The relative frequencies of letters in text, calculated by analysing a large number of written works.' %}
 
-Using this technique, try to decode your intercepted message. Look for patterns in the ciphertext that might correspond to quirks of the original message, and use the chances of different letters occuring to give you hints. Humans are naturally good at finding patterns, so with any luck you'll have cracked the code in no time.
+Using this technique, try to decode your intercepted message. Look for patterns in the ciphertext that might correspond to quirks of the original message, and use the chances of different letters occurring to give you hints. Humans are naturally good at finding patterns, so with any luck you'll have cracked the code in no time.
 
 In the event that a reasoned, logical approach doesn't yield a satisfactory result, it is always an option to try all the possible shift amounts! As there are only 26 different ways that our shift cipher can associate coded letters with plaintext letters, it's not particularly time consuming to try each and see what it looks like. This is especially true if you get a computer to do the heavy lifting for you:
 
@@ -217,9 +217,15 @@ In the event that a reasoned, logical approach doesn't yield a satisfactory resu
 // TODO: Insert
 ```
 
-It is clear, then, that the shift cipher isn't an exceptionally strong form of encryption.
+It is clear, then, that the shift cipher isn't an exceptionally strong form of encryption. It's relatively trivial to break — especially for computers — and what's more, it often isn't even practical on the Internet.
 
+Remember when you and your partner had to agree on a shift amount to use? If you weren't physically next to one another to exchange this information, you would have to send a message containing it. But wait, if the whole problem we're trying to solve is to send messages in secret, we would have to send this key piece of initial information — the piece that has the power to unscramble all of our encrypted messages — in regular unencrypted plaintext! That's no good!
+
+It turns out that this problem of communicating privately and securely is a bit of a tricky one. Over the Internet, it often involves exchanging an initial piece of secret data that, like the shift amount in our cipher, has the power to decrypt the messages. This is done through a ‘key exchange’ algorithm, which performs the curious job of securely exchanging a secret piece of information over an insecure communication channel.
+
+When both parties have successfully swapped secrets, an encryption algorithm — like our shift cipher — uses this to encrypt any communication between them. Unlike our shift cipher, however, it is desirable to have this be very difficult to break!
+
+<!-- Tie off the activity with a note on how encryption is difficult to get right, but ultimately necessary for private communications. And hey, remember banking and all of those applications we mentioned in the starter? This stuff is important! -->
 
 <!-- TODO: -->
-<!-- - Lead into the issue that we needed initial secret communication in the first place, which isn’t always possible over the Internet -->
 <!-- - Replace ASCII table image -->
