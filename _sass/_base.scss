@@ -57,6 +57,11 @@ pre.highlight {
   margin: 0 0 1.75em;
 }
 
+pre {
+  max-width: 100%;
+  overflow-x: auto;
+}
+
 .page-wrapper {
   box-sizing: border-box;
   max-width: 840px;
