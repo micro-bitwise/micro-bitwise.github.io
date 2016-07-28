@@ -38,11 +38,9 @@ Though primitive in nature, this could be considered a very simple free-for-all 
 	1. If the 'A' button was pressed, send a message over the radio with your name.
 	2. Check for any messages from the radio, displaying anything that is found.
 
-There are a few obvious problems with this though. Firstly, messaging applications [*usually*](https://en.wikipedia.org/wiki/Yo_(app)) let you write your own message rather than sending one for you. And secondly, we probably want to introduce some idea of different chats rather than a single free-for-all.
+There are a few obvious problems with this though. Firstly, messaging applications [*usually*](https://en.wikipedia.org/wiki/Yo_(app)) let you write your own message rather than sending one for you — we'll handle this later. And secondly, we probably want to introduce some idea of different chats rather than a single free-for-all.
 
-<!-- TODO: Add alphabet selection -->
-
-The radio in the micro:bit doesn't allow you to send messages directly to one person — anyone can listen in on your conversation. Instead, groups of messages can be differentiated by a channel. Sending messages over multiple channels is similar to the transmission of multiple radio stations. Different stations broadcast on different frequencies at the same time, but your car radio — though it *could* listen to all the stations simultaneously — is set up to only listen to one channel at a time. After all, nobody wants to listen to One Direction, The Beatles, and Metallica all at the same time.
+The radio in the micro:bit doesn't allow you to send messages directly to one person — anyone can listen in on your conversation. Instead, groups of messages can be differentiated by a *channel*. Sending messages over multiple channels is similar to the transmission of multiple radio stations. Different stations broadcast on different frequencies at the same time, but your car radio — though it *could* listen to all the stations simultaneously — is set up to only listen to one channel at a time. After all, nobody wants to listen to One Direction, The Beatles, and Metallica all at the same time.
 
 Within a particular channel, there are further ways to distinguish between messages such as sending with and filtering by a particular number called an 'address' (much like a postal address). We can configure the radio to listen and send only on a particular set of related communications — e.g. address 50 on channel 3 — by adding the follow command after enabling the radio:
 
@@ -168,10 +166,9 @@ Remember, functions like `ord` are documented in the [official Python manual](ht
 
 #### .upper()
 
----
 
 <!-- TODO: -->
-<!-- - Actually implement the thing -->
+<!-- - Alphabet selection -->
 <!-- - The language is too closely related to English (e.g. punctuation, letter frequency, etc.), hence cryptanalysis is easy. Try it out by using X script to log messages from another group and then break their encryption! -->
 <!-- - Lead into the issue that we needed initial secret communication in the first place, which isn't always possible over the Internet -->
 <!-- - Replace ASCII table image -->
