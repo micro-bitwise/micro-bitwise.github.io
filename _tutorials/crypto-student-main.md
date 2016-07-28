@@ -221,11 +221,16 @@ It is clear, then, that the shift cipher isn't an exceptionally strong form of e
 
 Remember when you and your partner had to agree on a shift amount to use? If you weren't physically next to one another to exchange this information, you would have to send a message containing it. But wait, if the whole problem we're trying to solve is to send messages in secret, we would have to send this key piece of initial information — the piece that has the power to unscramble all of our encrypted messages — in regular unencrypted plaintext! That's no good!
 
-It turns out that this problem of communicating privately and securely is a bit of a tricky one. Over the Internet, it often involves exchanging an initial piece of secret data that, like the shift amount in our cipher, has the power to decrypt the messages. This is done through a ‘key exchange’ algorithm, which performs the curious job of securely exchanging a secret piece of information over an insecure communication channel.
+It turns out that this problem of communicating privately and securely is a bit of a tricky one. Over a shared medium like radio or the Internet, this often involves exchanging an initial piece of secret data that, like the shift amount in our cipher, has the power to decrypt the messages. This is done through a ‘key exchange’ algorithm, which performs the curious job of securely exchanging a secret piece of information over an insecure communication channel.
 
-When both parties have successfully swapped secrets, an encryption algorithm — like our shift cipher — uses this to encrypt any communication between them. Unlike our shift cipher, however, it is desirable to have this be very difficult to break!
+An encryption algorithm — like our shift cipher — then uses a secret to encrypt data. Unlike our shift cipher, however, it is desirable to have this be very difficult to break! This is a common theme in cryptography, that a chain is only as strong as its weakest link. There are always a number of different components in a ‘secure’ system that can go wrong, and — unfortunately — often times they do.
 
-<!-- Tie off the activity with a note on how encryption is difficult to get right, but ultimately necessary for private communications. And hey, remember banking and all of those applications we mentioned in the starter? This stuff is important! -->
+Despite these difficulties, it is important not to forget the critical role that encryption plays in our day-to-day lives. It is vital to protecting any information exchanged or held by computers. Your financial data, passwords, mobile phone conversations and emails. Your web browsing habits, current location, personal notes, private pictures. We are in dire need a society that better understands encryption. Having built a cryptographic messaging system, you have gained some of this insight. And, if you desire, are in the perfect position to go deeper.
 
-<!-- TODO: -->
-<!-- - Replace ASCII table image -->
+{% comment %}
+TODO:
+	- Add the missing code snippets
+	- Add the missind '.upper' section
+	- Add some huge security disaster links to the last sentence of the penultimate paragraph
+	- Replace ASCII table image
+{% endcomment %}
