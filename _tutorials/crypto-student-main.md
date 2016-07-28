@@ -38,7 +38,7 @@ Though primitive in nature, this could be considered a very simple free-for-all 
 	1. If the ‘A’ button was pressed, send a message over the radio with your name.
 	2. Check for any messages from the radio, displaying anything that is found.
 
-There are a few obvious problems with this though. Firstly, messaging applications [*usually*](https://en.wikipedia.org/wiki/Yo_(app)) let you write your own message rather than sending one for you — we’ll handle this later. And secondly, we probably want to introduce some idea of different chats rather than a single free-for-all.
+There is an obvious problem with this, though. Rather than have a single free-for-all shouting competition, we probably want to introduce some idea of distinct chats for different groups of people.
 
 The radio in the micro:bit doesn’t allow you to send messages directly to one person — anyone can listen in on your conversation. Instead, groups of messages can be differentiated by a *channel*. Sending messages over multiple channels is similar to the transmission of multiple radio stations. Different stations broadcast on different frequencies at the same time, but your car radio — though it *could* listen to all the stations simultaneously — is set up to only listen to one channel at a time. After all, nobody wants to listen to One Direction, The Beatles, and Metallica all at the same time.
 
@@ -67,7 +67,7 @@ Ciphertext  Wkh txlfn eurzq ira mxpsv ryhu wkh odcb grj.
 
 This ciphertext is then broadcasted, and any valid receiver of the message — with whom this code of shifting three places to the right has already been established — then needs only to shift each letter back three places. `A` becomes `X`, `D` becomes `A`, `E` become `B`, etc. This seems like a clear improvement on transmitting plaintext, so let’s integrate this idea into our messaging program.
 
-We’ll start off by shifting our message by a fixed number of letters. Look at the script below. You’ll need to
+We’ll start off by shifting our message by a fixed number of letters. Look at the script below. You’ll need to:
 
 * Decide on a channel with your partner, and both use the same channel
 * Set your name
@@ -175,10 +175,51 @@ There is a problem with this approach, however. What happens to the letter ‘Z�
 To accomplish this, we simply want numbers greater than 25 to wrap back around to the start. This can be achieved using the modulo operation — represented by the percentage symbol `%` — which finds the remainder after dividing two numbers. So `15 % 26` will give a remainder of 15 (as 15 is zero 26s plus 15), `26 % 26` will give a remainder of 0 (as it divides perfectly), and `28 % 26` will give a remainder of 3 (as 3 is one 26 plus 3). This is exactly the behaviour we want, and so our shift calculation is: `shifted_letter_num = (letter_num + amount) % 26`.
 
 #### return
-`// To complete`
+With this number representing the letter resulting from the shift, it's important not to forget that we've been working with all our numbers after subtracting `ord('A')`. To get back to the original numbering system we can simply add this back on, returning this value as the output of our function: `return chr(ord('A') + shifted_letter_num)`.
+
+## Message Selection
+We've done it, we've implemented a basic shift cipher! Sending a predetermined message like your name isn't terribly useful though. Messaging apps [*usually*](https://en.wikipedia.org/wiki/Yo_(app)) let you choose a message for yourself. So let's do that!
+
+The micro:bit isn't a device designed for longform textual input, so writing messages won't be the easiest, but it can be done. We can use the two face buttons to scroll through the alphabet — displaying the current letter on the LED grid — and can send the letter when both buttons are pressed in parallel, slowly building a message. This arrangement is a little clunky, particularly if you're hoping to write a bestselling novel, but for our purposes it will suffice.
+
+As the focus of this activity is to learn about encryption rather than input mechanisms, our final program to send and receive encrypted messages over a particular radio channel follows. If you're curious to learn more about how `get_letter` works, the general idea is that we display the `current_letter` that has been selected until it is detected that both buttons have been pressed, at which point the letter that was selected at this time is given as the output of the function.
+
+```
+// TODO: Insert 
+```
+
+Try it out. It's primitive, but it works! You can send messages between two micro:bits without eavesdroppers reading what you wrote... or can you?
+
+## Breaking Codes
+For as long as there has been cryptography and codes, there have been people interested in breaking those codes. In your case, those people are the opposing team that you have been paired with!
+
+Within these groups, teams should take it in turns to have a short conversation with their fellow team members while the other team listens on the same channel, noting down the message content on a piece of paper. Remember that knowing the channel to listen on isn't cheating, as listening on a different channel would simply mean that the micro:bit was actively filtering out your conversation data! To accomplish this, you should use the sending and snooping scripts that follow.
+
+```
+// TODO: Insert
+```
+
+Once both teams have done this, each should have a piece of paper full of gobbledygook. The intercepted message is gibberish, the shift cipher is doing its job. There are a few things you might notice about the message, however. Notably, spaces and punctuation remain in tact, as they were not modified by the encryption. The spaces give us information about the length of words in the message — which are in the same order as they were sent — and the punctuation provides clues for what's going on in the sentence.
+
+Take the shifted sentence “L'p vhqglqj d phvvdjh” for example. It doesn't take a rocket scientist to figure out that the single ‘d’ might be an ‘a’, or that the apostrophe in “L'p” might be a giveaway for “I'm”. And if we know for sure what one of the coded letters corresponds to, we can unshift the whole thing with ease. If ‘d’ corresponds to ‘a’ then that's a shift of 3, so the sentence would be “I'm sending a message”. It checks out.
+
+The problem here is that our encrypted language is too similar to English. All we've done is shift a few letters around by a fixed amount, and that makes our scrambled messages alarmingly close to regular ol’ English. One general purpose method for cracking codes by using this fact is called *frequency analysis*. This makes use of the fact that certain letters appear in the English language more than others. The letters in the previous sentence are ’e’s about 15% of the time, for example, which contrasts to the 3% rate you might expect if letters were chosen randomly.
+
+In fact, ‘e’ is generally the most common letter in the English language, followed by ‘t’ and then ‘a’. By checking how frequently certain letters occur in the encrypted message — assuming that the writer more or less naturally follows the usual letter frequency distribution — you can determine which coded letters are likely to correspond to which plaintext letters.
+
+{% include image.html source='/assets/contrib/images/crypto/english-letter-frequency.png' alt='Relative frequencies of letters in the English language' caption='The relative frequencies of letters in text, calculated by analysing a large number of written works.' %}
+
+Using this technique, try to decode your intercepted message. Look for patterns in the ciphertext that might correspond to quirks of the original message, and use the chances of different letters occuring to give you hints. Humans are naturally good at finding patterns, so with any luck you'll have cracked the code in no time.
+
+In the event that a reasoned, logical approach doesn't yield a satisfactory result, it is always an option to try all the possible shift amounts! As there are only 26 different ways that our shift cipher can associate coded letters with plaintext letters, it's not particularly time consuming to try each and see what it looks like. This is especially true if you get a computer to do the heavy lifting for you:
+
+```
+// TODO: Insert
+```
+
+It is clear, then, that the shift cipher isn't an exceptionally strong form of encryption.
+
 
 <!-- TODO: -->
-<!-- - Alphabet selection -->
-<!-- - The language is too closely related to English (e.g. punctuation, letter frequency, etc.), hence cryptanalysis is easy. Try it out by using X script to log messages from another group and then break their encryption! -->
 <!-- - Lead into the issue that we needed initial secret communication in the first place, which isn’t always possible over the Internet -->
 <!-- - Replace ASCII table image -->
