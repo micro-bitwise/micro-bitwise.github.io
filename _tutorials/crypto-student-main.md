@@ -8,11 +8,11 @@ authors:
 
 # Encryption
 
-With an understanding of what cryptography is and why it's important, the question remains: *how* exactly does encryption hide messages? To examine this question — and some solutions — more closely, let's write a program that allows two micro:bits to talk to one another: Micro:bit Messenger.
+With an understanding of what cryptography is and why it’s important, the question remains: *how* exactly does encryption hide messages? To examine this question — and some solutions — more closely, let’s write a program that allows two micro:bits to talk to one another: Micro:bit Messenger.
 
 ## Hello, World
 
-Let's take another look at the script from the starter activity:
+Let’s take another look at the script from the starter activity:
 
 ```
 from microbit import *
@@ -33,26 +33,26 @@ while True:
 Though primitive in nature, this could be considered a very simple free-for-all messaging program. Scripts of this kind simply consist of a series of commands that the computer should execute, from top to bottom. In this case, the code does the following:
 
 1. Import some handy conveniences to allow the script to easily manipulate various features of the micro:bit.
-2. Turn on the micro:bit's radio to allow it to communicate over Bluetooth, a technology for wirelessly sending messages over short distances.
+2. Turn on the micro:bit’s radio to allow it to communicate over Bluetooth, a technology for wirelessly sending messages over short distances.
 3. Do the following forever:
-	1. If the 'A' button was pressed, send a message over the radio with your name.
+	1. If the ‘A’ button was pressed, send a message over the radio with your name.
 	2. Check for any messages from the radio, displaying anything that is found.
 
-There are a few obvious problems with this though. Firstly, messaging applications [*usually*](https://en.wikipedia.org/wiki/Yo_(app)) let you write your own message rather than sending one for you — we'll handle this later. And secondly, we probably want to introduce some idea of different chats rather than a single free-for-all.
+There are a few obvious problems with this though. Firstly, messaging applications [*usually*](https://en.wikipedia.org/wiki/Yo_(app)) let you write your own message rather than sending one for you — we’ll handle this later. And secondly, we probably want to introduce some idea of different chats rather than a single free-for-all.
 
-The radio in the micro:bit doesn't allow you to send messages directly to one person — anyone can listen in on your conversation. Instead, groups of messages can be differentiated by a *channel*. Sending messages over multiple channels is similar to the transmission of multiple radio stations. Different stations broadcast on different frequencies at the same time, but your car radio — though it *could* listen to all the stations simultaneously — is set up to only listen to one channel at a time. After all, nobody wants to listen to One Direction, The Beatles, and Metallica all at the same time.
+The radio in the micro:bit doesn’t allow you to send messages directly to one person — anyone can listen in on your conversation. Instead, groups of messages can be differentiated by a *channel*. Sending messages over multiple channels is similar to the transmission of multiple radio stations. Different stations broadcast on different frequencies at the same time, but your car radio — though it *could* listen to all the stations simultaneously — is set up to only listen to one channel at a time. After all, nobody wants to listen to One Direction, The Beatles, and Metallica all at the same time.
 
-Within a particular channel, there are further ways to distinguish between messages such as sending with and filtering by a particular number called an 'address' (much like a postal address). We can configure the radio to listen and send only on a particular set of related communications — e.g. address 50 on channel 3 — by adding the follow command after enabling the radio:
+Within a particular channel, there are further ways to distinguish between messages such as sending with and filtering by a particular number called an ‘address’ (much like a postal address). We can configure the radio to listen and send only on a particular set of related communications — e.g. address 50 on channel 3 — by adding the follow command after enabling the radio:
 
 ```
 radio.config(channel=7, address=50)
 ```
 
-You can try this with your partner. Add the above line to the script we used previously — choosing a channel between 0 and 100 and an address between 0 and 4,294,967,295 — and watch how the conversation suddenly seems so quiet. Despite appearances, however, this conversation is far from private! Every message is still being broadcast for all to see, it's just that most devices are keeping themselves to themselves and not eavesdropping. So how can we go about resolving this issue of privacy?
+You can try this with your partner. Add the above line to the script we used previously — choosing a channel between 0 and 100 and an address between 0 and 4,294,967,295 — and watch how the conversation suddenly seems so quiet. Despite appearances, however, this conversation is far from private! Every message is still being broadcast for all to see, it’s just that most devices are keeping themselves to themselves and not eavesdropping. So how can we go about resolving this issue of privacy?
 
 ## Cryptography!
 
-Thankfully, our old friend cryptography is here to save the day. If we scramble our messages such that only the intended recipients are able to unscramble them, our secrets are safe. Anyone listening in may intercept the scrambled message, but they won't know what to make of it. But how should we actually go about muddling up our messages in this way?
+Thankfully, our old friend cryptography is here to save the day. If we scramble our messages such that only the intended recipients are able to unscramble them, our secrets are safe. Anyone listening in may intercept the scrambled message, but they won’t know what to make of it. But how should we actually go about muddling up our messages in this way?
 
 One simple solution, which has been used since at least 50 BC, is the *shift* or *Caesar cipher*. This replaces each letter in the *plaintext* (the raw message we want to transmit), with a different letter some fixed number of positions away in the alphabet, wrapping back around to the ends of the alphabet when necessary. If we choose to shift three spaces down the alphabet, for example, all `A`s become `D`s, `B`s become `E`s, `X`s become `A`s, etc.
 
@@ -65,15 +65,15 @@ Plaintext:  The quick brown fox jumps over the lazy dog.
 Ciphertext  Wkh txlfn eurzq ira mxpsv ryhu wkh odcb grj.
 ```
 
-This ciphertext is then broadcasted, and any valid receiver of the message — with whom this code of shifting three places to the right has already been established — then needs only to shift each letter back three places. `A` becomes `X`, `D` becomes `A`, `E` become `B`, etc. This seems like a clear improvement on transmitting plaintext, so let's integrate this idea into our messaging program.
+This ciphertext is then broadcasted, and any valid receiver of the message — with whom this code of shifting three places to the right has already been established — then needs only to shift each letter back three places. `A` becomes `X`, `D` becomes `A`, `E` become `B`, etc. This seems like a clear improvement on transmitting plaintext, so let’s integrate this idea into our messaging program.
 
-We'll start off by shifting our message by a fixed number of letters. Look at the script below. You'll need to
+We’ll start off by shifting our message by a fixed number of letters. Look at the script below. You’ll need to
 
 * Decide on a channel with your partner, and both use the same channel
 * Set your name
 * Choose a number of letters to shift your message by
 
-Then you can flash it to both your micro:bits, press the 'A' button and see what happens. You should see a scrambled message on the other micro:bit!
+Then you can flash it to both your micro:bits, press the ‘A’ button and see what happens. You should see a scrambled message on the other micro:bit!
 
 ```
 from microbit import *
@@ -105,11 +105,11 @@ while True:
         display.scroll(new_message)
 ```
 
-Whew! That script has quite a bit to unpack. You might have noticed the sections beginning with `def shift_letter` and `def shift_message`. These are 'functions': just like in maths, they take an input, do something to it and produce an output.
+Whew! That script has quite a bit to unpack. You might have noticed the sections beginning with `def shift_letter` and `def shift_message`. These are ‘functions’: just like in maths, they take an input, do something to it and produce an output.
 
 ## shift_letter
 
-Let's look at `shift_letter` first.
+Let’s look at `shift_letter` first.
 
 ```
 def shift_letter(letter: str, amount: str) -> str:
@@ -126,14 +126,14 @@ The purpose of this function is simple: you give it a single letter (`letter`) a
 
 ### shift_letter
 
-Let's break down what `shift_letter` is actually doing.
+Let’s break down what `shift_letter` is actually doing.
 
 ```
 if (letter == ' '):
   return ' '
 ```
 
-First (to keep things simple) we decide that we don't want to do any shifting of spaces. So, if `shift_letter` is given a space character, it will just return another space.
+First (to keep things simple) we decide that we don’t want to do any shifting of spaces. So, if `shift_letter` is given a space character, it will just return another space.
 
 ```
 letter_num = ord(letter.upper()) - ord('A')
@@ -143,32 +143,42 @@ letter_num = ord(letter.upper()) - ord('A')
 
 There are a few things to look at here. First of all, what does `ord()` do?
 
-Well, simply put, it changes any letter into a number. Every letter has a unique number. Here's a table of some of the common ones:
+Well, simply put, it changes any letter into a number. Every letter has a unique number. Here’s a table of some of the common ones:
 
 {% include image.html source='/assets/contrib/images/crypto/ascii-table.png' alt='ASCII to decimal table' caption='Image from http://macao.communications.museum/eng/exhibition/secondfloor/MoreInfo/Displays.html' %}
 
-You can see from this that when we call `ord('A')`, we must get `65` in response. If we call `ord('V')`, we'll get `86`.
+You can see from this that when we call `ord('A')`, we must get `65` in response. If we call `ord('V')`, we’ll get `86`.
 
 Can you see a slight problem here?
 
-'A' is the first letter of the alphabet, and 'V' is the 22nd - not 65th and 86th! Actually, when we are storing a list in a computer, we normally refer to the first thing in the list as the zeroth (0th) thing, the second thing as the first and so on - like this:
+‘A’ is the first letter of the alphabet, and ‘V’ is the 22nd - not 65th and 86th! Actually, when we are storing a list in a computer, we normally refer to the first thing in the list as the zeroth (0th) thing, the second thing as the first and so on - like this:
 
 {% include image.html source='/assets/contrib/images/crypto/list.png' alt='ASCII to decimal table' caption='Image from http://macao.communications.museum/eng/exhibition/secondfloor/MoreInfo/Displays.html' %}
 
-So, how can we turn 'A' into the number 0 and 'V' into the number 22? There's an easy solution! Just subtract the number for 'A' from the number for the letter:
+So, how can we turn ‘A’ into the number 0 and ‘V’ into the number 21? There’s an easy solution! Just subtract the number for ‘A’ from the number for the letter:
 
 ```
 ord('A') - ord('A') -> 0    Because A is the 0th letter of the alphabet
 ord('V') - ord('A') -> 21   Because (starting from 0) V is the 21st letter of the alphabet
 ```
 
-Remember, functions like `ord` are documented in the [official Python manual](https://docs.python.org/3/library/functions.html#ord). If you're ever stuck, try looking things up here!
+Remember, functions like `ord` are documented in the [official Python manual](https://docs.python.org/3/library/functions.html#ord). If you’re ever stuck, try looking things up here!
 
 #### .upper()
+`// To complete`
 
+#### shifted_letter_num
+Having translated the input letter to a sensible number that represents its uppercase equivalent, we need to actually do the letter shifting. As letters that are next to one another in the alphabet are represented as numbers with this same property, we can shift a numeric representation up the alphabet by simple addition. In this case, we wish to move `amount` places down the alphabet, and so can get our result from `letter_num + amount`.
+
+There is a problem with this approach, however. What happens to the letter ‘Z’? If we follow this logic with a shift of three, we will get 25 + 3 = 28 — as there are only 26 letters in the alphabet (numbered 0, 1, ..., 25), this is not a desirable result! Instead, we want to wrap around the alphabet when necessary, so ‘Z’ should translate to ‘C’ (represented by 3) after a shift of amount 3.
+
+To accomplish this, we simply want numbers greater than 25 to wrap back around to the start. This can be achieved using the modulo operation — represented by the percentage symbol `%` — which finds the remainder after dividing two numbers. So `15 % 26` will give a remainder of 15 (as 15 is zero 26s plus 15), `26 % 26` will give a remainder of 0 (as it divides perfectly), and `28 % 26` will give a remainder of 3 (as 3 is one 26 plus 3). This is exactly the behaviour we want, and so our shift calculation is: `shifted_letter_num = (letter_num + amount) % 26`.
+
+#### return
+`// To complete`
 
 <!-- TODO: -->
 <!-- - Alphabet selection -->
 <!-- - The language is too closely related to English (e.g. punctuation, letter frequency, etc.), hence cryptanalysis is easy. Try it out by using X script to log messages from another group and then break their encryption! -->
-<!-- - Lead into the issue that we needed initial secret communication in the first place, which isn't always possible over the Internet -->
+<!-- - Lead into the issue that we needed initial secret communication in the first place, which isn’t always possible over the Internet -->
 <!-- - Replace ASCII table image -->
