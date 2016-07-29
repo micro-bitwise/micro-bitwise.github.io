@@ -20,6 +20,8 @@ Enjoy!
 
 [:bitwise on GitHub](https://github.com/micro-bitwise/micro-bitwise.github.io/)
 
+_:bitwise is [Ross Gardiner](https://github.com/rossng) and [Joe Savage](https://github.com/joesavage)_
+
 {% include image.html source='/assets/contrib/images/arm-intern-innovation-challenge/microbit-messenger.jpg' alt='' caption='' fig-style='width:38%; display: inline-block; margin: 1%;' style='border-radius: 5px;' %}
 {% include image.html source='/assets/contrib/images/arm-intern-innovation-challenge/repl.png' alt='' caption='' fig-style='width:52%; display: inline-block; margin: 1%;' style='border-radius: 5px;' %}
 {% include image.html source='/assets/contrib/images/arm-intern-innovation-challenge/joe-at-laptop.jpg' alt='' caption='' fig-style='width:48%; display: inline-block; margin: 1%;' style='border-radius: 5px;' %}
