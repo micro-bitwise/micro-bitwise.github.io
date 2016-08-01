@@ -257,12 +257,64 @@ Try it out. It's primitive, but it works! You can send messages between two micr
 
 For as long as there has been cryptography and codes, there have been people interested in breaking those codes. In your case, those people are the opposing team that you have been paired with!
 
-Within these groups, teams should take it in turns to have a short conversation with their fellow team members while the other team listens on the same channel, noting down the message content on a piece of paper. Remember that knowing the channel to listen on isn't cheating, as listening on a different channel would simply mean that the micro:bit was actively filtering out your conversation data! To accomplish this, you should use the sending and snooping scripts that follow.
+Within your groups, two of you should try sending some messages to each other using the script above. Meanwhile, the other pair can listen on the same channel, using the script below. Remember that knowing the channel to listen on isn't cheating, as listening on a different channel would simply mean that the micro:bit was actively filtering out your conversation data!
 
-### Snooping script
+### Receiver script
+
+This new receiver script has a special feature. Read the code and see if you can figure out what it is.
+
+[Show answer](javascript:$('#answer1').show("slow");void(0))
+
+<div id="answer1" class="tutorial__content__answer">
+When you receive a message, you can scroll through the different shift amounts using the A and B buttons. This will let you decrypt the other team's message! Try it out.
+</div>
 
 ```
-// TODO: Insert
+from microbit import *
+import radio
+
+def shift_letter(letter: str, amount: str) -> str:
+    letter_num = ord(letter) - ord('A')
+    shifted_letter_num = (letter_num + amount) % 26
+    return chr(ord('A') + shifted_letter_num)
+
+def shift_message(message: str, amount: str) -> str:
+    shifted_message = map(lambda l: shift_letter(l, shift_amount), message)
+    return ''.join(shifted_message)
+
+def shift_message_simple(message: str, amount: str) -> str:
+    shifted_message = ""
+    for l in message:
+        shifted_message += shift_letter(l, amount)
+    return shifted_message
+
+radio.on()
+radio.config(channel=7) # Make sure you are using the same channel number as the sender!
+                        # Remember, knowing the channel number isn't cheating.
+
+message = ""
+shift_amount = 0
+
+while True:
+    button_a_pressed = button_a.was_pressed()
+    button_b_pressed = button_b.was_pressed()
+
+    if button_a_pressed:
+        shift_amount -= 1
+
+    if button_b_pressed:
+        shift_amount += 1
+
+    letter = radio.receive()
+
+    if letter:
+        display.show(letter)
+        message += letter
+        sleep(500)
+
+    letter = None
+
+    display.scroll(shift_message(message, shift_amount))
 ```
 
 Once both teams have done this, each should have a piece of paper full of gobbledygook. The intercepted message is gibberish, the shift cipher is doing its job. There are a few things you might notice about the message, however. Notably, spaces and punctuation remain in tact, as they were not modified by the encryption. The spaces give us information about the length of words in the message — which are in the same order as they were sent — and the punctuation provides clues for what's going on in the sentence.
