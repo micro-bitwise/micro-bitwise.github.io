@@ -191,16 +191,75 @@ The micro:bit isn't a device designed for long-form textual input, so writing me
 
 As the focus of this activity is to learn about encryption rather than input mechanisms, our final program to send and receive encrypted messages over a particular radio channel follows. If you're curious to learn more about how `get_letter` works, the general idea is that we display the `current_letter` that has been selected until it is detected that both buttons have been pressed, at which point the letter that was selected at this time is given as the output of the function.
 
+### Sender program
+
+This program is only capable of sending messages, not receiving them. Flash it onto one of your micro:bits and try sending a message. What appears on the other micro:bit? Can you decode it?
+
 ```
-// TODO: Insert
+from microbit import *
+import radio
+
+radio.on()
+radio.config(channel=7) # Make sure you are using the same channel number as the receiver!
+
+def get_letter() -> str:
+    current_letter = 'A'
+    choosing = True
+    while choosing:
+        sleep(300)
+        display.show(current_letter)
+
+        button_a_pressed = button_a.was_pressed()
+        button_b_pressed = button_b.was_pressed()
+
+        if button_a_pressed and button_b_pressed:
+            choosing = False
+        elif button_a_pressed:
+            current_letter = shift_letter(current_letter, -1)
+        elif button_b_pressed:
+            current_letter = shift_letter(current_letter, 1)
+
+    return current_letter
+
+def shift_letter(letter: str, amount: str) -> str:
+    letter_num = ord(letter) - ord('A')
+    shifted_letter_num = (letter_num + amount) % 26
+    return chr(ord('A') + shifted_letter_num)
+
+display.scroll("Choose shift")
+shift_amount = 0
+choosing_shift = True
+
+while choosing_shift:
+    sleep(300)
+    display.show(str(shift_amount))
+
+    button_a_pressed = button_a.was_pressed()
+    button_b_pressed = button_b.was_pressed()
+
+    if button_a_pressed and button_b_pressed:
+        choosing_shift = False
+    elif button_a_pressed:
+        shift_amount -= 1
+    elif button_b_pressed:
+        shift_amount += 1
+
+while True:
+    chosen_letter = get_letter()
+    display.show(chosen_letter)
+    radio.send(shift_letter(chosen_letter, shift_amount))
+    sleep(2000)
 ```
 
 Try it out. It's primitive, but it works! You can send messages between two micro:bits without eavesdroppers reading what you wrote... or can you?
 
 ## Breaking Codes
+
 For as long as there has been cryptography and codes, there have been people interested in breaking those codes. In your case, those people are the opposing team that you have been paired with!
 
 Within these groups, teams should take it in turns to have a short conversation with their fellow team members while the other team listens on the same channel, noting down the message content on a piece of paper. Remember that knowing the channel to listen on isn't cheating, as listening on a different channel would simply mean that the micro:bit was actively filtering out your conversation data! To accomplish this, you should use the sending and snooping scripts that follow.
+
+### Snooping script
 
 ```
 // TODO: Insert
