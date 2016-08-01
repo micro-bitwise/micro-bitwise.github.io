@@ -165,7 +165,14 @@ ord('V') - ord('A') -> 21   Because (starting from 0) V is the 21st letter of th
 Remember, functions like `ord` are documented in the [official Python manual](https://docs.python.org/3/library/functions.html#ord). If you’re ever stuck, try looking things up here!
 
 #### .upper()
-`// To complete`
+
+Calling `.upper()` on a string of text will produce an entirely-uppercase version of that string. For example:
+
+```
+"Hello there!".upper() == "HELLO THERE!"
+```
+
+We do this to the `letter` because shifting both lowercase and uppercase letters gets a lot more complicated! If we just stick to using uppercase letters for everything, we can reduce the amount of code we need to write.
 
 #### shifted_letter_num
 Having translated the input letter to a sensible number that represents its uppercase equivalent, we need to actually do the letter shifting. As letters that are next to one another in the alphabet are represented as numbers with this same property, we can shift a numeric representation up the alphabet by simple addition. In this case, we wish to move `amount` places down the alphabet, and so can get our result from `letter_num + amount`.
@@ -185,7 +192,7 @@ The micro:bit isn't a device designed for long-form textual input, so writing me
 As the focus of this activity is to learn about encryption rather than input mechanisms, our final program to send and receive encrypted messages over a particular radio channel follows. If you're curious to learn more about how `get_letter` works, the general idea is that we display the `current_letter` that has been selected until it is detected that both buttons have been pressed, at which point the letter that was selected at this time is given as the output of the function.
 
 ```
-// TODO: Insert 
+// TODO: Insert
 ```
 
 Try it out. It's primitive, but it works! You can send messages between two micro:bits without eavesdroppers reading what you wrote... or can you?
