@@ -343,7 +343,12 @@ It turns out that this problem of communicating privately and securely is a bit 
 
 An encryption algorithm — like our shift cipher — then uses a secret to encrypt data. Unlike our shift cipher, however, it is desirable to have this be very difficult to break! This is a common theme in cryptography, that a chain is only as strong as its weakest link. There are always a number of different components in a ‘secure’ system that can go wrong, and — unfortunately — often times they do.
 
-Despite these difficulties, it is important not to forget the critical role that encryption plays in our day-to-day lives. It is vital to protecting any information exchanged or held by computers. Your financial data, passwords, mobile phone conversations and emails. Your web browsing habits, current location, personal notes, private pictures. We are in dire need a society that better understands encryption. Having built a cryptographic messaging system, you have gained some of this insight. And, if you desire, are in the perfect position to go deeper.
+Despite these difficulties, it is important not to forget the critical role that encryption plays in our day-to-day lives. It is vital to protecting any information exchanged or held by computers. Your financial data, passwords, mobile phone conversations and emails. Your web browsing habits, current location, personal notes, private pictures. We are in dire need a society that better understands encryption. Having built a cryptographic messaging system, you have gained some of this insight.
+
+{% include image.html source='/assets/contrib/images/crypto/cracking-code-book.jpg' alt='The Cracking Code Book by Simon Singh' style='max-height: 200px; float: right;' %}
+
+Interested in finding out more about encryption? Why not have a look and see if your school library has a copy of [The Cracking Code Book](https://www.harpercollins.co.uk/9780007176045/the-cracking-code-book)?
+
 
 {% comment %}
 TODO:
